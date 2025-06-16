@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Marianne Chair - Asistente Virtual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola, soy Marianne Chair 👩‍💼</h1>
+  <p>Estoy aquí para ayudarte a resolver cualquier duda sobre nuestros productos y servicios.</p>
+
+  <!-- Script embebido de HeyGen -->
+  <script>
+    !function(window){
+      const host = "https://labs.heygen.com";
+      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJNYXJpYW5uZV9DaGFpcl9TaXR0aW5nX3B1YmxpYyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzNkNjA2ZDc2NTk4NTQ1NDFhMGRkOWVlM2E4MTUyOGVjXzU1MzgwL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6Ijk5OTAyMmQ5MDJiZjQxYWZhYmVjMzEyNDNiOGM5NmM1IiwidXNlcm5hbWUiOiIxNDUyOGVmOTE1MjM0MzI3YjE5NWYyMjQzNGIzYjQ1OSJ9&inIFrame=1";
+      
+      const wrapDiv = document.createElement("div");
+      wrapDiv.id = "heygen-streaming-embed";
+
+      const container = document.createElement("div");
+      container.id = "heygen-streaming-container";
+
+      const stylesheet = document.createElement("style");
+      stylesheet.innerHTML = `
+        #heygen-streaming-embed {
+          z-index: 9999;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          border: 2px solid #fff;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+          transition: all linear 0.2s;
+          overflow: hidden;
+          opacity: 0;
+          visibility: hidden;
+          background-color: #000;
+        }
+        #heygen-streaming-embed.show {
+          opacity: 1;
+          visibility: visible;
+        }
+        #heygen-streaming-embed.expand {
+          width: 640px;
+          height: 360px;
+          border: 0;
+          border-radius: 12px;
+        }
+        #heygen-streaming-container {
+          width: 100%;
+          height: 100%;
+        }
+        #heygen-streaming-container iframe {
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+      `;
+
+      const iframe = document.createElement("iframe");
+      iframe.allowFullscreen = false;
+      iframe.title = "Streaming Embed";
+      iframe.role = "dialog";
+      iframe.allow = "microphone";
+      iframe.src = url;
+
+      let visible = false, initial = false;
+
+      window.addEventListener("message", (e) => {
+        if (e.origin === host && e.data?.type === "streaming-embed") {
+          if (e.data.action === "init") {
+            initial = true;
+            wrapDiv.classList.add("show");
+          } else if (e.data.action === "show") {
+            visible = true;
+            wrapDiv.classList.add("expand");
+          } else if (e.data.action === "hide") {
+            visible = false;
+            wrapDiv.classList.remove("expand");
+          }
+        }
+      });
+
+      container.appendChild(iframe);
+      wrapDiv.appendChild(stylesheet);
+      wrapDiv.appendChild(container);
+      document.body.appendChild(wrapDiv);
+    }(globalThis);
+  </script>
+</body>
+</html>
